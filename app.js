@@ -611,7 +611,9 @@ function load() {
 				}
 			}
 		}
+		if(range < 500){
 		newgun();
+		}
 		matrix = new WebKitCSSMatrix(
 			window.getComputedStyle(document.getElementById("bullet")).transform
 		);
