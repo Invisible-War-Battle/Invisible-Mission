@@ -7,6 +7,8 @@ var users = [];
 var winners = 0;
 var players = [];
 var main;
+var roomname, pass;
+var room, password;
 var link;
 var range = 200;
 var ammo = 20;
@@ -27,7 +29,9 @@ var person;
 var roomnumber = 0;
 var otherplayer;
 function choose() {
-	person = brompt("Choose an username!");
+	brompt("Choose an username!", (p)=> {
+		person = p;
+	});
 	socket.emit("username", person);
 }
 document.getElementById("dialog").hidden = false;
@@ -41,8 +45,12 @@ document.getElementById("ok").onclick = () => {
 	document.body.style.background = "url(sky.jpg)";
 	document.getElementById("universe").hidden = false;
 	document.getElementById("text").hidden = false;
-	var room = brompt("Choose a private room name.");
-	var password = brompt("Choose a password.");
+	 brompt("Choose a private room name.", (p)=> {
+		room = p;
+	});
+	 brompt("Choose a password.", (p)=> {
+		password = p;
+	});
 	socket.emit("roomname", room);
 	socket.emit("password", password);
 	load();
@@ -66,15 +74,21 @@ document.getElementById("no").onclick = () => {
 	document.body.style.background = "url(sky.jpg)";
 	document.getElementById("universe").hidden = false;
 	document.getElementById("text").hidden = false;
-	var roomname = brompt("Enter the room name.");
+	 brompt("Enter the room name.", (p)=> {
+		roomname = p;
+	});
 	socket.emit("room", roomname);
-	var pass = brompt("Enter the room's password.");
+	 brompt("Enter the room's password.", (p)=> {
+		pass = p;
+	});
 	socket.emit("pass", pass);
 	load();
 }
 socket.on("usernotadded", () => {
-	person = brompt(
-		"Choose a new username. Your old one was either taken, inappropriate, or blank!"
+	brompt(
+		"Choose a new username. Your old one was either taken, inappropriate, or blank!", (p)=> {
+		person = p;
+	}
 	);
 	socket.emit("username", person);
 });
