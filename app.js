@@ -50,14 +50,12 @@ document.getElementById("ok").onclick = () => {
 		room = p;
 		 brompt("Choose a password.", (p)=> {
 		password = p;
+			 load();
 	});
 	});
 	 
 	socket.emit("roomname", room);
 	socket.emit("password", password);
-	if(room != null && password != null){
-	load();
-	}
 };
 document.getElementById("neither").onclick = () => {
 	document.getElementById("dialog").hidden = true;
@@ -82,23 +80,22 @@ document.getElementById("no").onclick = () => {
 		roomname = p;
 		 brompt("Enter the room's password.", (p)=> {
 		pass = p;
+			 load();
 	});
 	});
 	socket.emit("room", roomname);
 	 
 	socket.emit("pass", pass);
-	if(roomname != null && pass != null){
-	load();
 	}
 }
 socket.on("usernotadded", () => {
 	brompt(
 		"Choose a new username. Your old one was either taken, inappropriate, or blank!", (p)=> {
 		person = p;
+				socket.emit("username", person);
 	blurt("You have been drafted to fight in the Invisible War. Use arrow keys to move and space to launch a bullet. When you hear a gunshot sound that is not yours, you will have 5 seconds to run until you are out of range of your target. The catch? No enemy can be seen. Use the coordinates on the left hand side to help you. The range is how far back (-Z) you can be, however, your X must be exact. Kill the 25 enemies to get to PvP. Good luck...");
 	}
 	);
-	socket.emit("username", person);
 });
 socket.on("roomclosed", (data) => {
 	if (
