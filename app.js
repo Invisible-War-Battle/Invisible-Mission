@@ -47,10 +47,11 @@ document.getElementById("ok").onclick = () => {
 	document.getElementById("text").hidden = false;
 	 brompt("Choose a private room name.", (p)=> {
 		room = p;
-	});
-	 brompt("Choose a password.", (p)=> {
+		 brompt("Choose a password.", (p)=> {
 		password = p;
 	});
+	});
+	 
 	socket.emit("roomname", room);
 	socket.emit("password", password);
 	if(room && password){
@@ -78,11 +79,12 @@ document.getElementById("no").onclick = () => {
 	document.getElementById("text").hidden = false;
 	 brompt("Enter the room name.", (p)=> {
 		roomname = p;
-	});
-	socket.emit("room", roomname);
-	 brompt("Enter the room's password.", (p)=> {
+		 brompt("Enter the room's password.", (p)=> {
 		pass = p;
 	});
+	});
+	socket.emit("room", roomname);
+	 
 	socket.emit("pass", pass);
 	if(roomname && pass){
 	load();
