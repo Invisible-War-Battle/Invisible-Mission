@@ -84,7 +84,7 @@ document.getElementById("no").onclick = () => {
 		pass = p;
 	});
 	socket.emit("pass", pass);
-	if(roomname && pass{
+	if(roomname && pass){
 	load();
 	}
 }
