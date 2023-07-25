@@ -142,6 +142,7 @@ function load() {
 		if (matrix4.m41 === -1000 && matrix4.m43 === 0 && ps === 10) {
 			alert("Enjoy your new gun.");
 			range = 500;
+			document.getElementById("bullet").src = "snipe.png";
 			document.getElementById("range").innerHTML = "Range: 500";
 			document.removeEventListener("keydown", newgun);
 		}
