@@ -87,7 +87,6 @@ document.getElementById("no").onclick = () => {
 	 
 	socket.emit("pass", pass);
 	}
-}
 socket.on("usernotadded", () => {
 	brompt(
 		"Choose a new username. Your old one was either taken, inappropriate, or blank!", (p)=> {
