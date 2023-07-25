@@ -53,7 +53,9 @@ document.getElementById("ok").onclick = () => {
 	});
 	socket.emit("roomname", room);
 	socket.emit("password", password);
-	setTimeout(load, 5000)
+	if(room && password){
+	load();
+	}
 };
 document.getElementById("neither").onclick = () => {
 	document.getElementById("dialog").hidden = true;
@@ -67,7 +69,7 @@ document.getElementById("neither").onclick = () => {
 	}
 	socket.emit("self", link);
 	console.log(link);
-	setTimeout(load, 5000)
+	load();
 };
 document.getElementById("no").onclick = () => {
 	document.getElementById("dialog").hidden = true;
@@ -82,7 +84,9 @@ document.getElementById("no").onclick = () => {
 		pass = p;
 	});
 	socket.emit("pass", pass);
-	setTimeout(load, 5000)
+	if(roomname && pass{
+	load();
+	}
 }
 socket.on("usernotadded", () => {
 	brompt(
