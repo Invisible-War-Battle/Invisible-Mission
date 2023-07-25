@@ -95,6 +95,7 @@ socket.on("usernotadded", () => {
 	brompt(
 		"Choose a new username. Your old one was either taken, inappropriate, or blank!", (p)=> {
 		person = p;
+	blurt("You have been drafted to fight in the Invisible War. Use arrow keys to move and space to launch a bullet. When you hear a gunshot sound that is not yours, you will have 5 seconds to run until you are out of range of your target. The catch? No enemy can be seen. Use the coordinates on the left hand side to help you. The range is how far back (-Z) you can be, however, your X must be exact. Kill the 25 enemies to get to PvP. Good luck...");
 	}
 	);
 	socket.emit("username", person);
