@@ -31,6 +31,7 @@ var otherplayer;
 function choose() {
 	brompt("Choose an username!", (p)=> {
 		person = p;
+	blurt("You have been drafted to fight in the Invisible War. Use arrow keys to move and space to launch a bullet. When you hear a gunshot sound that is not yours, you will have 5 seconds to run until you are out of range of your target. The catch? No enemy can be seen. Use the coordinates on the left hand side to help you. The range is how far back (-Z) you can be, however, your X must be exact. Kill the 25 enemies to get to PvP. Good luck...");
 	});
 	socket.emit("username", person);
 }
@@ -54,7 +55,7 @@ document.getElementById("ok").onclick = () => {
 	 
 	socket.emit("roomname", room);
 	socket.emit("password", password);
-	if(room && password){
+	if(room != null && password != null){
 	load();
 	}
 };
@@ -86,7 +87,7 @@ document.getElementById("no").onclick = () => {
 	socket.emit("room", roomname);
 	 
 	socket.emit("pass", pass);
-	if(roomname && pass){
+	if(roomname != null && pass != null){
 	load();
 	}
 }
@@ -144,7 +145,6 @@ socket.on("gameover", (killed) => {
 });
 
 function load() {
-	blurt("You have been drafted to fight in the Invisible War. Use arrow keys to move and space to launch a bullet. When you hear a gunshot sound that is not yours, you will have 5 seconds to run until you are out of range of your target. The catch? No enemy can be seen. Use the coordinates on the left hand side to help you. The range is how far back (-Z) you can be, however, your X must be exact. Kill the 25 enemies to get to PvP. Good luck...");
 		choose();
 	function myfunction(tree) {
 		tree.src = "explosion.png";
